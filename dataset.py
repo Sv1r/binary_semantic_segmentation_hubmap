@@ -1,7 +1,4 @@
-import cv2
-import numpy as np
 import torch
-from matplotlib import pyplot as plt
 
 import utils
 import settings
@@ -26,19 +23,20 @@ print(f'Mask shape:\n{list(train_dataset[0][1].shape)}\n')
 print(f'Train dataset length: {train_dataset.__len__()}')
 print(f'Valid dataset length: {valid_dataset.__len__()}\n')
 # Datasets
-# train_dataloader = torch.utils.data.DataLoader(
-#     train_dataset,
-#     batch_size=settings.BATCH_SIZE,
-#     shuffle=True,
-#     drop_last=True,
-#     pin_memory=True
-# )
-# valid_dataloader = torch.utils.data.DataLoader(
-#     valid_dataset,
-#     batch_size=settings.BATCH_SIZE,
-#     shuffle=True,
-#     drop_last=True,
-#     pin_memory=True
-# )
-# # Plot Images with masks
-# utils.batch_image_mask_show(valid_dataloader)
+train_dataloader = torch.utils.data.DataLoader(
+    train_dataset,
+    batch_size=settings.BATCH_SIZE,
+    shuffle=True,
+    drop_last=True,
+    pin_memory=True
+)
+valid_dataloader = torch.utils.data.DataLoader(
+    valid_dataset,
+    batch_size=settings.BATCH_SIZE,
+    shuffle=True,
+    drop_last=True,
+    pin_memory=True
+)
+# Plot Images with masks
+if settings.PLOT_BATCH:
+    utils.batch_image_mask_show(valid_dataloader)
