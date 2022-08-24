@@ -41,7 +41,8 @@ model, loss_and_metrics = utils.train_model(
     loss=loss,
     optimizer=optimizer,
     num_epochs=settings.EPOCHS,
-    threshold=settings.THRESHOLD
+    threshold=settings.THRESHOLD,
+    avg_results=True
 )
 # Result Plot of Loss and Metrics
 utils.result_plot(loss_and_metrics)
